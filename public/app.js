@@ -9,9 +9,14 @@ document.addEventListener("click", (event) => {
 
   if (event.target.dataset.type === "edit") {
     const id = event.target.dataset.id;
-    const title = prompt("Введите новое значение", event.target.dataset.title).trim();
+    const title = prompt(
+      "Введите новое значение",
+      event.target.dataset.title
+    )?.trim();
     if (title) {
-      edit(id, title);
+      edit(id, title).then(() => {
+        event.target.parentNode.querySelector("span").innerHTML = title;
+      });
     }
   }
 });
