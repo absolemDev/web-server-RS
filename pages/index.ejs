@@ -35,17 +35,13 @@
       <div class="card">
         <ul class="list-group">
           <% for (let i = 0; i < notes.length; i++) { %>
-          <li class="list-group-item d-flex align-items-center">
-            <span class="me-auto"><%= notes[i].title %></span>
-            <button
-              class="btn btn-primary me-1"
-              data-type="edit"
-              data-id="<%= notes[i].id %>"
-              data-title="<%= notes[i].title %>"
-            >
-              Редактировать
-            </button>
-            <button class="btn btn-danger" data-type="remove" data-id="<%= notes[i].id %>">&times;</button>
+          <li class="list-group-item">
+            <div class="note-block d-flex align-items-center">
+              <span class="me-auto"><%= notes[i].title %></span>
+              <button class="btn btn-primary me-1" data-type="edit">Редактировать</button>
+              <button class="btn btn-danger" data-type="remove" data-id="<%= notes[i].id %>">&times;</button>
+            </div>
+            <%- include('./editInput', {title: notes[i].title, id: notes[i].id}) %>
           </li>
           <% } %>
         </ul>
